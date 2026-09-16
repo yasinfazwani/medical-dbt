@@ -1,0 +1,8 @@
+sources:
+  - name: staging
+    database: hospital  
+    schema: staging  
+    tables:
+      - name: patients
+      - name: hospital_stays
+      - name: unit_stays

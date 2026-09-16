@@ -1,0 +1,4 @@
+models:
+  - name: sf_dbt_medical
+    config:
+      schema: bronze

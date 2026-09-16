@@ -1,0 +1,10 @@
+snapshots:
+  - name: dim_patients
+    relation: ref('patients')
+    config:
+      database: hospital
+      schema: gold
+      unique_key: uniquepid
+      strategy: timestamp
+      updated_at: patient_create_date
+      dbt_valid_to_current:  "null"
