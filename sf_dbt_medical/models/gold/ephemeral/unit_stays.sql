@@ -16,9 +16,9 @@ with unit_stays as
     unitstaytype,
     unitdischargelocation,
     unitdischargestatus,
-    create_date,
+    create_date
     from {{ ref('obt') }}
-    qualify row_number() over (partition by uniquepid order by patient_create_date desc) = 1
+    qualify row_number() over (partition by patientunitstayid order by patient_create_date desc) = 1
 )
 
 select * from unit_stays

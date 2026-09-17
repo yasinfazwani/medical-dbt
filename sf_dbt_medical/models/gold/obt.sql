@@ -1,7 +1,7 @@
 {% set content = [
     {
         "table": ref('silver_unit_stays'),
-        "columns": "silver_unit_stays.*",
+        "columns": ['patientunitstayid', 'wardid', 'unittype', 'apacheadmissiondx', 'admissionheight', 'admissionweight', 'dischargeweight', 'unitadmittime24', 'unitadmitsource', 'unitvisitnumber', 'unitstaytype', 'unitdischargetime24', 'unitdischargeoffset', 'unitdischargelocation', 'unitdischargestatus', 'create_date'],
         "alias": "silver_unit_stays"
 
     },
@@ -23,16 +23,11 @@
 
 select
  {% for configs in content %}
-   {% if configs['columns'] is string %}
-   {{ configs['columns'] }}
-   {% else %}
    {% for col in configs['columns'] %}
-   {{ configs['alias'] }}.{{ col }}{% if not loop.last %}, {% endif %}
-   {% endfor %}
-   {% endif %}
-   {% if not loop.last %},{% endif %}
- {% endfor %}
- from
+   {{ configs['alias'] }}.{{ col }}{% if not loop.last or not loop.last %}, {% endif %}
+   {% endfor %}{% if not loop.last %},{% endif %}
+{% endfor %}
+from
  {% for configs in content %}
     {%if loop.first%}
     {{configs['table']}} as {{configs['alias']}}
