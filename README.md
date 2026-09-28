@@ -1,4 +1,4 @@
-# Medical DBT — Hospital ICU Data Transformation Pipeline
+# Medical DBT: Hospital ICU Data Transformation Pipeline
 
 A dbt project that transforms raw hospital ICU admission data (patients, hospital
 stays, and unit stays) into a clean, tested, analytics-ready dataset on Snowflake,
